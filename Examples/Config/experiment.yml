@@ -1,0 +1,6 @@
+Experiment:
+  name: This is a test Experiment
+  range: [1, 10, 0.1]
+  list:
+   _ first Element
+   _ second Element
