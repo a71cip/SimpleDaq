@@ -48,14 +48,21 @@ class SimpleDaq():
         time.sleep(0.5)
         return self.read()
 
+
     def get_analog_value(self, channel):
         write_string = 'IN:CH'+str(channel)
         val = int(self.query(write_string))
         return val
 
+
     def finalize(self):
         if self.rsc is not None:
             self.rsc.close()
+
+    def set_pwm(self, channel, value):
+        pass
+
+
 
 
 if __name__ == "__main__":

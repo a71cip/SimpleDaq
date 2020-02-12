@@ -34,13 +34,15 @@ class AnalogDaq(DAQBase):
 
 	def idn(self):
 		return self._driver.query('IDN')
-
+	"""
 	def get_analog_value(self, channel):
 		query_string = 'IN:CH'+str(channel)
 		value_int = int(self._driver.query(query_string))
-		#value_volts = value_int/1024*Q_('3.3V')
 		value_volts = value_int*5/1024
 		return value_volts
+	"""
+	def get_analog_value(self, channel):
+		return self._driver.get_analog_value(channel)*5/1024
 
 	def set_analog_value(self, channel, value):
 		pass
@@ -52,6 +54,9 @@ class AnalogDaq(DAQBase):
 		write_string = 'DI:' + 'CH' + str(port) + ':' + str(value)
 		#print(write_string)
 		self._driver.write(write_string)
+	
+	def set_pwm(self, channel, value):
+		pass
 
 	
 
