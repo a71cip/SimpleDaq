@@ -26,6 +26,12 @@ class AnalogDaq(DAQBase):
 	def initialize(self):
 		self._driver.initialize()
 
+	def finalize(self):
+		self._driver.finalize()
+
+	def status(self):
+		return self._driver.status()
+
 	def idn(self):
 		return self._driver.query('IDN')
 

@@ -13,6 +13,9 @@ V = ur('V')
 daq = AnalogDaq('/dev/ttyUSB0')
 daq.initialize()
 
+if (daq.status()):
+	print("Device is open")
+
 print('Serial Number : %s' %(daq.idn()))
 
 adc = daq.get_analog_value(0)*V
@@ -22,7 +25,13 @@ daq.set_digital_value(13,1)
 time.sleep(1)
 
 daq.set_digital_value(13,0)
-time.sleep(1)
+
+daq.finalize()
+
+if (not daq.status()):
+	print("Device is close")
+
+
 
 
 

@@ -23,8 +23,8 @@ class SimpleDaq():
         print('Opening serial communication @ %s ...' % (self.port))
         time.sleep(3)
         #status = self.rsc.is_open  # check if the port is really open
-        if (self.status()):
-            print('Device is open')
+        #if (self.status()):
+        #    print('Device is open')
 
     def write(self, message):
         msg=(message + self.DEFAULTS['write_termination']).encode(self.DEFAULTS['encoding'])
