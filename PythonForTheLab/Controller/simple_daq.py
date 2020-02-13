@@ -54,6 +54,9 @@ class SimpleDaq():
         val = int(self.query(write_string))
         return val
 
+    def set_digital_value(self, channel, value):
+        write_string = 'DI:' + 'CH' + str(channel) + ':' + str(value)
+        self.write(write_string)
 
     def finalize(self):
         if self.rsc is not None:

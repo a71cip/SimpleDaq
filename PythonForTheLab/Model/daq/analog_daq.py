@@ -50,10 +50,11 @@ class AnalogDaq(DAQBase):
 	def get_digital_value(self, port):
 		pass
 
-	def set_digital_value(self, port, value):
-		write_string = 'DI:' + 'CH' + str(port) + ':' + str(value)
+	def set_digital_value(self, channel, value):
+		#write_string = 'DI:' + 'CH' + str(channel) + ':' + str(value)
 		#print(write_string)
-		self._driver.write(write_string)
+		#self._driver.write(write_string)
+		self._driver.set_digital_value(channel,value)
 	
 	def set_pwm(self, channel, value):
 		pass
