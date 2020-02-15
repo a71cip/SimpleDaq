@@ -62,9 +62,9 @@ class SimpleDaq():
         if self.rsc is not None:
             self.rsc.close()
 
-    def set_pwm(self, channel, value):
-        pass
-
+    def pwm(self, channel, value):
+        write_string = 'PWM:' + 'CH' + str(channel) + ':' + str(value)
+        self.write(write_string)
 
 
 

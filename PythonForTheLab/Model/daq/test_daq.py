@@ -25,6 +25,16 @@ daq.set_digital_value('05',1)
 time.sleep(1)
 
 daq.set_digital_value('05',0)
+time.sleep(0.5)
+
+daq.pwm('05',255)
+time.sleep(0.5)
+
+daq.pwm('05',128)
+time.sleep(0.5)
+
+daq.pwm('05',0)
+time.sleep(0.5)
 
 daq.finalize()
 

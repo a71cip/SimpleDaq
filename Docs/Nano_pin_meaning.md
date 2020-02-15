@@ -9,15 +9,15 @@ Always use the names that are printed on the board. Except the digital pins D0-D
    // RESET // reset   // reset active low
    // GND   // ground  // ground
 2  // D2    // digital // digital IO/external interrupt
-3  // D3    // digital // digital IO/pwm/external interrupt
+3  // D3    // digital // digital IO/pwm 490Hz/external interrupt
 4  // D4    // digital // digital IO
-5  // D5    // digital // digital IO/pwm
-6  // D6    // digital // digital IO/pwm
+5  // D5    // digital // digital IO/pwm 980Hz
+6  // D6    // digital // digital IO/pwm 980Hz
 7  // D7    // digital // digital IO
 8  // D8    // digital // digital IO
-9  // D9    // digital // digital IO/pwm
-10 // D10   // digital // digital IO/pwm/SS
-11 // D11   // digital // digital IO/pwm/MOSI
+9  // D9    // digital // digital IO/pwm 490Hz
+10 // D10   // digital // digital IO/pwm 490Hz/SS
+11 // D11   // digital // digital IO/pwm 490Hz/MOSI
 12 // D12   // digital // digital IO/MISO
 
 13 // D13   // digital // digital IO/built in led/SCK

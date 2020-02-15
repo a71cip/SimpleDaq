@@ -56,8 +56,8 @@ class AnalogDaq(DAQBase):
 		#self._driver.write(write_string)
 		self._driver.set_digital_value(channel,value)
 	
-	def set_pwm(self, channel, value):
-		pass
+	def pwm(self, channel, value):
+		self._driver.pwm(channel,value)
 
 	
 
