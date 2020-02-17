@@ -1,6 +1,23 @@
 Experiment:
-  name: This is a test Experiment
-  range: [1, 10, 0.1]
-  list:
-   _ first Element
-   _ second Element
+
+  User: 
+   name: Cip
+   role: tech
+
+  DAQ:
+   name: analog_daq_NANO
+   port: /dev/ttyUSB0
+
+  Scan:
+   start: 0V
+   stop: 3.2V
+   step: 400mV
+   channel_out: 0
+   channel_in: 0
+   delay: 100ms
+
+  Save_File:
+   filename: data.dat # Files won't be overwritten, but renamed as data_001.dat, etc.
+
+  GUI:
+   refresh_time: 100ms

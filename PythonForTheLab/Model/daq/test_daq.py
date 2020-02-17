@@ -1,7 +1,7 @@
 import numpy as np
 import pint
 import time
-from .analog_daq import AnalogDaq
+from .analog_daq_NANO import AnalogDaq
 
 #dev = AnalogDaq('/dev/TTYUSB0')
 #dev.idn()
