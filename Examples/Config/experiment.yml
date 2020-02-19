@@ -2,11 +2,16 @@ Experiment:
 
   User: 
    name: Cip
-   role: tech
+   type: pwm sequence
 
   DAQ:
    name: analog_daq_NANO
    port: /dev/ttyUSB0
+
+  Sequence:
+   channel: '05'
+   step: 5
+   delay: 50
 
   Scan:
    start: 0V
