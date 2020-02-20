@@ -19,12 +19,19 @@ class Experiment:
 
 
     def load_config(self, filename=None):
-        path = os.path.join(os.path.expanduser('~'),'PyCharmProjects','OpenCV-Lab','SimpleDaq','PythonForTheLab','Model','experiment','PWM_experiment.py')
-        print(path)
+        os.chdir("/home/cip/PycharmProjects/OpenCV-Lab/SimpleDaq/Examples/Config")
 
+        with open(filename, 'r') as f:
+            ee = yaml.load(f)
+
+        print (ee['Experiment'])
+        for k in ee['Experiment']:
+            print(k)
+            print(ee['Experiment'][k])
+            print(10*'-')
 
 
 if __name__ == "__main__":
     e = Experiment()
-    e.load_config('..../Example/Config/experiment.yml')
+    e.load_config('experiment.yml')
     #e.load_daq()
