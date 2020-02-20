@@ -5,7 +5,7 @@ Experiment:
    type: pwm sequence
 
   DAQ:
-   name: analog_daq_NANO
+   name: Nano
    port: /dev/ttyUSB0
 
   Sequence:
