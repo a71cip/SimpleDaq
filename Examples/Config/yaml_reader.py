@@ -1,6 +1,6 @@
 import yaml
 
-with open('experiment.yml', 'r') as f:
+with open('experiment_test.yml', 'r') as f:
 	e = yaml.load(f)
 
 print (e['Experiment'])

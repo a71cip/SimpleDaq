@@ -1,28 +1,28 @@
-Experiment:
+User:
+  name: cip
+  role: tech
+  type: pwm sequence
 
-  User: 
-   name: Cip
-   type: pwm sequence
+DAQ:
+  name: Nano
+  port: /dev/ttyUSB0
 
-  DAQ:
-   name: Nano
-   port: /dev/ttyUSB0
 
-  Sequence:
-   channel: '05'
-   step: 5
-   delay: 50
+Sequence:
+  channel: '05'
+  step: 5
+  delay: 50
 
-  Scan:
-   start: 0V
-   stop: 3.2V
-   step: 400mV
-   channel_out: 0
-   channel_in: 0
-   delay: 100ms
+Scan:
+  start: 0V
+  stop: 3.2V
+  step: 400mV
+  channel_out: 0
+  channel_in: 0
+  delay: 100ms
 
-  Save_File:
-   filename: data.dat # Files won't be overwritten, but renamed as data_001.dat, etc.
+Save_File:
+  filename: data.dat # Files won't be overwritten, but renamed as data_001.dat, etc.
 
-  GUI:
-   refresh_time: 100ms
+GUI:
+  refresh_time: 100ms

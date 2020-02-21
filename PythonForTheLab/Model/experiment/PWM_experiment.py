@@ -22,14 +22,37 @@ class Experiment:
         os.chdir("/home/cip/PycharmProjects/OpenCV-Lab/SimpleDaq/Examples/Config")
 
         with open(filename, 'r') as f:
-            ee = yaml.load(f)
+            #ee = yaml.load(f)
+            params = yaml.load(f, Loader=yaml.FullLoader)
 
-        print (ee['Experiment'])
-        for k in ee['Experiment']:
-            print(k)
-            print(ee['Experiment'][k])
-            print(10*'-')
+        #print (ee['Experiment'])
+        #for k in ee['Experiment']:
+        #    print(k)
+        #    print(ee['Experiment'][k])
+        #    print(10*'-')
 
+        self.properties = params
+        #print(self.properties)
+        self.properties['config_file'] = filename
+        user  = self.properties['User']['name']
+        role  = self.properties['User']['role']
+        type  = self.properties['User']['type']
+        daq   = self.properties['DAQ']['name']
+        port  = self.properties['DAQ']['port']
+        ch    = self.properties['Sequence']['channel']
+        step  = self.properties['Sequence']['step']
+        delay = self.properties['Sequence']['delay']
+
+
+        print(self.properties['config_file'])
+        print(user)
+        print(role)
+        print(type)
+        print(daq)
+        print(port)
+        print(ch)
+        print(step)
+        print(delay)
 
 if __name__ == "__main__":
     e = Experiment()
