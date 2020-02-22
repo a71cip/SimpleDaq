@@ -44,15 +44,15 @@ class Experiment:
         delay = self.properties['Sequence']['delay']
 
 
-        print(self.properties['config_file'])
-        print(user)
-        print(role)
-        print(type)
-        print(daq)
-        print(port)
-        print(ch)
-        print(step)
-        print(delay)
+        print('Experiment file : %s' %(self.properties['config_file']))
+        print('User : %s' %(user))
+        print('Role : %s' %(role))
+        print('Experiment type : %s' %(type))
+        print('Daq : %s' %(daq))
+        print('Port : %s' %(port))
+        print('Pwm channel : %s' %(ch))
+        print('Pwm step : %s' %(step))
+        print('Pwm delay : %s' %(delay))
 
 if __name__ == "__main__":
     e = Experiment()
