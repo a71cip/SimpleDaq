@@ -7,6 +7,7 @@ experiments. It allows to build simple GUIs around them and to easily share the 
 
 import yaml
 import os
+import time
 
 
 class Experiment:
@@ -68,13 +69,43 @@ class Experiment:
                 port = self.properties['DAQ']['port']
 
                 if name == 'DummyDaq':
-                    from PythonForTheLab.Model.daq import DummyDaq
-                    self.daq = DummyDaq(port)
+                    #from PythonForTheLab.Model.daq import DummyDaq
+                    #self.daq = DummyDaq(port)
+                    pass
 
                 elif name == 'Nano':
                     print('NANO')
-                    #from ..daq.analog_daq_NANO import AnalogDaq
-                    #self.daq = AnalogDaq(port)
+                    from ..daq.analog_daq_NANO import AnalogDaq
+                    self.daq = AnalogDaq(port)
+                    self.daq.initialize()
+
+                    if (self.daq.status()):
+                        print("Device is open")
+
+                    print('Serial Number : %s' % (self.daq.idn()))
+
+                    adc = self.daq.get_analog_value(0)
+                    print('Voltage at AD0 : %s' % (adc))
+
+                    self.daq.set_digital_value('05', 1)
+                    time.sleep(1)
+
+                    self.daq.set_digital_value('05', 0)
+                    time.sleep(0.5)
+
+                    self.daq.pwm('05', 255)
+                    time.sleep(0.5)
+
+                    self.daq.pwm('05', 128)
+                    time.sleep(0.5)
+
+                    self.daq.pwm('05', 0)
+                    time.sleep(0.5)
+
+                    self.daq.finalize()
+
+                    if (not self.daq.status()):
+                        print("Device is close")
 
                 elif name == 'PyVisa':
                     #from PythonForTheLab.Model.daq.visa_daq import AnalogDaq
@@ -90,7 +121,7 @@ class Experiment:
             self.daq = daq_model
 
 
-if __name__ == "__main__":
-    e = Experiment()
-    e.load_config('experiment.yml')
-    e.load_daq()
+#if __name__ == "__main__":
+e = Experiment()
+e.load_config('experiment.yml')
+e.load_daq()
