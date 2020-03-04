@@ -8,6 +8,7 @@ experiments. It allows to build simple GUIs around them and to easily share the 
 import yaml
 import os
 import time
+import numpy as np
 
 
 class Experiment:
@@ -92,7 +93,7 @@ class Experiment:
 
                     self.daq.set_digital_value('05', 0)
                     time.sleep(0.5)
-
+                    """
                     self.daq.pwm('05', 255)
                     time.sleep(0.5)
 
@@ -101,11 +102,11 @@ class Experiment:
 
                     self.daq.pwm('05', 0)
                     time.sleep(0.5)
+                    """
+                    #self.daq.finalize()
 
-                    self.daq.finalize()
-
-                    if (not self.daq.status()):
-                        print("Device is close")
+                    #if (not self.daq.status()):
+                    #    print("Device is close")
 
                 elif name == 'PyVisa':
                     #from PythonForTheLab.Model.daq.visa_daq import AnalogDaq
@@ -120,8 +121,49 @@ class Experiment:
         else:
             self.daq = daq_model
 
+    def do_pwm(self):
+        ch = self.properties['Sequence']['channel']
+        start = self.properties['Sequence']['start']
+        stop = self.properties['Sequence']['stop']
+        step = self.properties['Sequence']['step']
+        delay = self.properties['Sequence']['delay']
+        print(ch)
+        print(step)
+        print(delay)
+
+
+        pwm_values = np.linspace(start, stop, step)
+        print(pwm_values)
+
+
+        for value in pwm_values:
+            pwm_now = value
+            #self.daq.pwm('05', pwm_now)
+            #time.sleep(10)
+            #print(pwm_now)
+            self.daq.pwm(ch, pwm_now)
+            time.sleep(delay/1000)
+
+        time.sleep(0.5)
+        self.daq.pwm(ch, 0)
+        self.daq.finalize()
+
+        if (not self.daq.status()):
+            print("Device is close")
+
+        """
+        self.daq.pwm('05', 255)
+        time.sleep(0.5)
+
+        self.daq.pwm('05', 128)
+        time.sleep(0.5)
+
+        self.daq.pwm('05', 0)
+        time.sleep(0.5)
+        """
 
 #if __name__ == "__main__":
 e = Experiment()
 e.load_config('experiment.yml')
 e.load_daq()
+e.do_pwm()

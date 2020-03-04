@@ -10,8 +10,10 @@ DAQ:
 
 Sequence:
   channel: '05'
+  start: 0
+  stop: 255
   step: 5
-  delay: 50ms
+  delay: 500
 
 Save_File:
   filename: data.dat # Files won't be overwritten, but renamed as data_001.dat, etc.
