@@ -88,12 +88,13 @@ class Experiment:
                     adc = self.daq.get_analog_value(0)
                     print('Voltage at AD0 : %s' % (adc))
 
+                    """
                     self.daq.set_digital_value('05', 1)
                     time.sleep(1)
 
                     self.daq.set_digital_value('05', 0)
                     time.sleep(0.5)
-                    """
+                    
                     self.daq.pwm('05', 255)
                     time.sleep(0.5)
 
@@ -146,10 +147,10 @@ class Experiment:
 
         time.sleep(0.5)
         self.daq.pwm(ch, 0)
-        self.daq.finalize()
+        #self.daq.finalize()
 
-        if (not self.daq.status()):
-            print("Device is close")
+        #if (not self.daq.status()):
+        #    print("Device is close")
 
         """
         self.daq.pwm('05', 255)
@@ -162,8 +163,36 @@ class Experiment:
         time.sleep(0.5)
         """
 
+    def do_flash(self):
+
+        ch = self.properties['Flasher']['channel']
+        ton = self.properties['Flasher']['ton']
+        toff = self.properties['Flasher']['toff']
+        count = self.properties['Flasher']['count']
+
+        #print(ch)
+        #print(ton)
+        #print(toff)
+        #print(count)
+
+
+        for i in range(count+1):
+            #print(i)
+            self.daq.set_digital_value(ch,1)
+            time.sleep(ton/1000)
+            self.daq.set_digital_value(ch,0)
+            time.sleep(toff/1000)
+
+
+        self.daq.finalize()
+
+        if (not self.daq.status()):
+            print("Device is close")
+
+
 #if __name__ == "__main__":
 e = Experiment()
 e.load_config('experiment.yml')
 e.load_daq()
 e.do_pwm()
+e.do_flash()

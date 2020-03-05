@@ -15,6 +15,12 @@ Sequence:
   step: 5
   delay: 500
 
+Flasher:
+  channel: '05'
+  ton: 100
+  toff: 500
+  count: 10
+
 Save_File:
   filename: data.dat # Files won't be overwritten, but renamed as data_001.dat, etc.
 
