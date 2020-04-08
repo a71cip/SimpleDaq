@@ -192,7 +192,7 @@ class Experiment:
 
 #if __name__ == "__main__":
 e = Experiment()
-e.load_config('experiment.yml')
+e.load_config('pwm_experiment.yml')
 e.load_daq()
 e.do_pwm()
 e.do_flash()
